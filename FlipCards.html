@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Concepts with Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 50px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    h1 {
+      color: #38bdf8
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 100px; 
+      margin-top: 80px;
+    }
+
+    /**** CARD CONTAINER ****/
+    .card {
+      width: 350px;
+      height: 350px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    /**** CARD INNER ****/
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /**** FRONT & BACK ****/
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      background: #2a3e60;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 15px rgba(116, 85, 85, 0.4);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-front:hover {
+      background: 0 8px 16px rgba(34, 137, 182, 0.3);
+      transform: scale(1.02);
+    }
+
+    .card-front h3 {
+      color: #8bbe1e;
+      margin-bottom: 10px;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #334155;
+      color: #cbd5e1;
+      text-align: left;
+      padding: 10px;
+      display: block;
+      overflow: auto;
+      font-size:14px;
+    }
+
+    .card-back h4 {
+      color: #0fe4fc;
+      margin-bottom: 10px;
+    }
+
+    .card-back pre{
+        margin: 0;
+        padding: 5px;
+    }
+
+    .card-back code{
+        white-space: pre-wrap;
+        display: block;
+        line-height: 1.2;
+    }
+
+    .reset-btn {
+      margin-top: 100px;
+      background: #e00c17;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .reset-btn:hover {
+      background: #1f520e;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Concept with Example</h1>
+
+  <div class="cards">
+    <div class="card" data-title="Closure" data-info="A closure is created when a function remembers variables from its outer scope even after that scope has finished executing.">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>Event Loop</h3>
+          <p>Click to see Example</p>
+        </div>
+        <div class="card-back">
+          <h4>Event Loop Example</h4>
+          <pre><code>
+console.log("Start");
+setTimeout(() => {
+console.log("Inside setTimeout");
+}, 0);
+console.log("End");
+          </code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-title="Promise" data-info="Promises manage asynchronous operations with resolve and reject, avoiding callback hell.">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>Promise</h3>
+          <p>Click to see Example</p>
+        </div>
+        <div class="card-back">
+          <h4>Promise Example</h4>
+          <pre><code>
+let promise = new Promise((resolve, reject) => {
+  let dataFound = true;
+
+  if (dataFound) {
+    resolve("Data loaded successfully!");
+  } else {
+    reject("Data not found!");
+  }
+});
+
+promise
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log(err));
+          </code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-title="Event Loop" data-info="The event loop coordinates asynchronous callbacks, ensuring JavaScript remains non-blocking.">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>Higher Order Function</h3>
+          <p>Click to see Example</p>   
+        </div>
+        <div class="card-back">
+          <h4>Higher Order Function Example</h4>
+          <pre><code>
+function greet(name) {
+  return "Hello " + name;
+}
+
+function display(fn) {
+  console.log(fn("Supriya"));
+}
+
+display(greet);
+          </code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-title="Hoisting" data-info="Hoisting means moving variable and function declarations to the top of their scope before execution.">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>Hoisting</h3>
+          <p>Click to see Example</p>
+        </div>
+        <div class="card-back">
+          <h4>Hoisting Example</h4>
+          <pre><code>
+console.log(a); // undefined (because of hoisting)
+var a = 10;
+console.log(a); // 10
+          </code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetCards()">Reset All</button>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        // Flip the card
+        card.classList.toggle('flipped');
+
+        // Store flip state in sessionStorage
+        sessionStorage.setItem('card' + index, card.classList.contains('flipped'));
+      });
+    });
+
+    // Restore flip states from sessionStorage on load
+    window.addEventListener('load', () => {
+      cards.forEach((card, index) => {
+        const flipped = sessionStorage.getItem('card' + index) === 'true';
+        if (flipped) {
+          card.classList.add('flipped');
+        }
+      });
+    });
+
+    // Reset button clears sessionStorage
+    function resetCards() {
+      sessionStorage.clear();
+      cards.forEach(card => card.classList.remove('flipped'));
+    }
+  </script>
+</body>
+</html>
