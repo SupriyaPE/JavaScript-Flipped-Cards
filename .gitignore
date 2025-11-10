@@ -1,0 +1,5 @@
+Add the files or folders you want git to ignore
+
+
+#log files
+*.commitex
