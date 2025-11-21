@@ -1,0 +1,42 @@
+select *
+from customers;
+
+
+select country
+from customers
+where country in ('USA','UK')
+order by country desc;
+
+
+select country
+from customers
+where country NOT IN ('USA','UK');
+
+
+elect country
+from customers
+where country is not null;
+
+
+select country,age
+from customers
+where (age between 22 and 33);
+
+
+select first_name
+from customers
+where first_name like 'j%';
+
+
+select count(*),country
+from customers
+group by country
+having count(*)>=2;
+
+
+
+select *
+from customers
+order by customer_id desc,age asc;
+
+
