@@ -1,0 +1,43 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<section class="blog-container">
+
+    <!-- Create Post Button -->
+    <div class="create-post-btn">
+        <a href="{{ url_for('create_post') }}">+ Create New Post</a>
+    </div>
+
+    <!-- Blog Posts Grid  -->
+    <div class="blog-grid">
+        {% if posts %}
+            {% for post in posts %}
+            <div class="blog-card">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}</p>
+                <p class="post-date">Posted on: {{ post.created_at }}</p> 
+                <div class="blog-buttons">
+                    <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn view-btn">View</a>
+                    <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn edit-btn">Edit</a>
+                    <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn delete-btn">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts yet. Create your first post!</p>
+        {% endif %}
+    </div>
+</section> 
+{% endblock %}
+
+
+
+
+
+
+

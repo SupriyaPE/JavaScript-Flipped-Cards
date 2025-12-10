@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<!-- Profile Header -->
+<section class="profile-header">
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture" class="profile-pic">
+    <h1>Priya</h1>
+    <p>Full Stack Developer | Python, Django & Flask Enthusiast</p>
+</section>
+
+<!-- Skills Section -->
+<section class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">🐍</div>
+            <h3>Python</h3>
+            <p>Expert in Python programming</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            <h3>Flask</h3>
+            <p>Building dynamic web apps</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🛢️</div>
+            <h3>MySQL</h3>
+            <p>Database design and queries</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <h3>HTML/CSS</h3>
+            <p>Responsive and modern layouts</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3>JavaScript</h3>
+            <p>Interactive frontend features</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🍃</div>
+            <h3>Django</h3>
+            <p>Building scalable web applications</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🧩</div>
+            <h3>APIs</h3>
+            <p>RESTful API design and integration</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🔧</div>
+            <h3>Git</h3>
+            <p>Version control and collaboration</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🐳</div>
+            <h3>Docker</h3>
+            <p>Containerization and environment management</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">☁️</div>
+            <h3>AWS</h3>
+            <p>Cloud deployment and hosting</p>
+        </div>
+          
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+        <div class="project-card">
+            <h3>Todo App</h3>
+            <p>A full-stack app to manage tasks with Python, Flask, and MySQL.</p>
+        </div>
+        <div class="project-card">
+            <h3>Blog Website</h3>
+            <p>A dynamic blog platform with Flask, allowing CRUD operations.</p>
+        </div>
+        <div class="project-card">
+            <h3>Django Shop</h3>
+            <p>E-commerce project built using Django framework.</p>
+        </div>
+        <!-- Add more projects here -->
+    </div>
+</section>
+
+{% endblock %}
