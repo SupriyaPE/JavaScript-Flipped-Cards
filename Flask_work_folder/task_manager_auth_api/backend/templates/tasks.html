@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tasks-section">
+    <h1 class="tasks-title">Your Tasks 📌</h1>
+
+    <div class="add-task">
+        <input id="newTask" placeholder="Add a new task..." />
+        <button onclick="addTask()">Add</button>
+    </div>
+
+    <div id="tasks" class="tasks-list"></div>
+</div>
+
+<script>
+async function addTask() {
+    const title = document.getElementById("newTask").value;
+    const token = localStorage.getItem("token");
+    if (!title) return;
+
+    await fetch("http://127.0.0.1:5000/api/tasks", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ title })
+    });
+
+    document.getElementById("newTask").value = "";
+    loadTasks();
+}
+</script>
+
+{% endblock %}

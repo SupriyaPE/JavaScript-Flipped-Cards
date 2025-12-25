@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="/create">Create New Post</a>
+<br><br>
+
+{% for post in posts %}
+  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <h3>{{ post[1] }}</h3>
+    <p>{{ post[2] }}</p>
+    <a href="/view/{{ post[0] }}">View</a> |
+    <a href="/edit/{{ post[0] }}">Edit</a>
+    <form action="/delete/{{ post[0] }}" method="POST" style="display:inline;">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+{% endfor %}
+{% endblock %}

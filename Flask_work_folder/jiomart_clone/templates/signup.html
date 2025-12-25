@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup | JioMart</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="auth-body">
+
+
+<header class="header">
+    <div class="header-left">
+        <img src="/static/images/logo.png" class="logo" alt="JioMart">
+    </div>
+    <div class="header-right">
+        <a href="/login" class="header-btn">Login</a>
+    </div>
+</header>
+
+<!-- SIGNUP CARD -->
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Create Account</h2>
+
+        <input type="email" id="email" placeholder="Email address">
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="signup()">Sign Up</button>
+
+        <div class="otp-box">
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button onclick="verifyOtp()">Verify OTP</button>
+        </div>
+
+        <p class="auth-link">
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+    </div>
+</div>
+
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/otp.js"></script>
+</body>
+</html>

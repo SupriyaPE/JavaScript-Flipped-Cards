@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | JioMart</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="auth-body">
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <img src="/static/images/logo.png" class="logo" alt="JioMart">
+    </div>
+</header>
+
+<!-- LOGIN CARD -->
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Sign In</h2>
+
+        <input type="email" id="email" placeholder="Email address">
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="login()">Sign In</button>
+
+        <p class="auth-link">
+            Don’t have an account?
+            <a href="/signup">Sign up</a>
+        </p>
+    </div>
+</div>
+
+<script src="/static/js/auth.js"></script>
+</body>
+</html>

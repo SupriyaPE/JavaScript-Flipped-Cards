@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="logo">Task<span class="accent">Manager</span></a>
+      <nav class="nav">
+        <a href="/dashboard" id="nav-dashboard">Dashboard</a>
+        <a href="/tasks" id="nav-tasks">Tasks</a>
+        <a href="/login" id="nav-login">Login</a>
+        <button id="logoutBtn" class="btn-ghost" style="display:none">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page container">
+    {% block content %}{% endblock %}
+  </main>
+<!-- 
+  <footer class="footer">
+    <div class="container">© {{ (2025) }} Task Manager — Built with Flask</div>
+  </footer> -->
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    // show/hide nav based on auth token
+    const token = localStorage.getItem('token');
+    if (token) {
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('logoutBtn').style.display = 'inline-block';
+    } else {
+      document.getElementById('nav-login').style.display = 'inline-block';
+      document.getElementById('logoutBtn').style.display = 'none';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      location.href = '/login';
+    });
+  </script>
+</body>
+</html>

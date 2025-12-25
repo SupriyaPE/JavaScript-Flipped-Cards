@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to My Website!</h1>
+    <p>I am Priya, a Full Stack Developer.</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('profile') }}" class="btn">View Profile</a>
+        <a href="{{ url_for('blog') }}" class="btn">Read Blog</a>
+    </div>
+</section>
+
+<section class="about">
+    <h2>About Me</h2>
+    <p>
+       Hello! I’m Priya, a creative web developer who loves turning ideas into real-world web applications. 
+       I enjoy designing clean user interfaces and building powerful backend systems using Python and Flask. 
+       I’m always excited to learn new technologies and grow as a developer. 
+    </p>
+</section>
+{% endblock %}

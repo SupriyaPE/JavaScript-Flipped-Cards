@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-hero">
+    <h1>Welcome Back, <span id="username">User</span> 👋</h1>
+    <p>Your productivity overview at a glance.</p>
+</div>
+
+<div class="dashboard-grid">
+
+    <!-- CARD 1: Total Tasks -->
+    <div class="dash-card big">
+        <h2>Total Tasks</h2>
+        <div class="dash-number" id="taskCount">0</div>
+    </div>
+
+    <!-- CARD 2: Quick Add -->
+    <div class="dash-card">
+        <h2>Quick Add Task</h2>
+        <input id="quickTask" placeholder="Enter task..." />
+        <button onclick="quickAddTask()">Add</button>
+    </div>
+
+    <!-- CARD 3: Latest Tasks -->
+    <div class="dash-card">
+        <h2>Recent Tasks</h2>
+        <ul id="recentTasks"></ul>
+        <a href="/tasks" class="view-more">View All →</a>
+    </div>
+
+</div>
+
+<script>
+async function loadDashboard() {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch("http://127.0.0.1:5000/api/tasks", {
+        headers: { "Authorization": "Bearer " + token }
+    });
+
+    const tasks = await res.json();
+
+    // Show total count
+    document.getElementById("taskCount").innerText = tasks.length;
+
+    // Show recent 3 tasks
+    const recent = tasks.slice(-3);
+    let ul = document.getElementById("recentTasks");
+    ul.innerHTML = "";
+
+    recent.forEach(t => {
+        let li = document.createElement("li");
+        li.innerText = t.title;
+        ul.appendChild(li);
+    });
+}
+
+// Quick Add Task
+async function quickAddTask() {
+    const title = document.getElementById("quickTask").value;
+    const token = localStorage.getItem("token");
+    if (!title) return;
+
+    await fetch("http://127.0.0.1:5000/api/tasks", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ title })
+    });
+
+    document.getElementById("quickTask").value = "";
+    loadDashboard();
+}
+
+loadDashboard();
+</script>
+
+{% endblock %}
