@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="categories">
+  {% for category in categories %}
+    <a href="?q={{ category.name }}">
+    {% if category.image %}
+    <img src="{{ category.image.url }}" width="80" height="80">
+    {% endif %}
+      <p>{{ category.name }}</p>
+    </a>
+  {% endfor %}
+</div> 
+
+<div class="banner-section">
+  {% if show_banner %}
+    {% for banner in banners %}
+        {% if banner.image %}
+            <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+        {% endif %}
+    {% endfor %}
+  {% endif %}  
+</div>
+
+<h2>Kids Products</h2>
+<div class="products-container">
+    {% for product in products %}
+    <div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+        <h3>{{ product.title }}</h3>
+        <p>₹{{ product.price }}</p>
+        <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+

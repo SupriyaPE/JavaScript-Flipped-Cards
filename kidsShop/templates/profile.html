@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-page">
+
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar">
+                {{ user.username|first|upper }}
+            </div>
+            <div class="info">
+                <h3>{{ user.username }}</h3>
+                <p>{{ user.email }}</p>
+            </div>
+            <a href="/" class="close-btn">❌</a>
+        </div>
+
+        <ul class="profile-menu">
+            <li><a href="{% url 'orders' %}">My Orders</a></li>
+            <li><a href="#">Customer Care</a></li>
+            <li><a href="#">Invite Friends & Earn</a></li>
+            <li><a href="#">Wallet</a></li>
+            <li><a href="#">Saved Cards</a></li>
+            <li><a href="#">My Rewards</a></li>
+            <li><a href="#">Address</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li class="logout"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

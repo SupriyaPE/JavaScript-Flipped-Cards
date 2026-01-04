@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kids Shop</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<hr>
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="{% url 'product' %}">Home</a>
+        <a href="{% url 'cart' %}">Cart
+        {% if cart_count > 0 %}
+          ({{ cart_count }})
+        {% endif %}
+        </a>
+        <a href="{% url 'orders' %}">Orders</a>
+    </div>
+
+    <details class="nav-filter">
+        <summary class="filter-btn">Filter ▾</summary>
+
+            <div class="filter-dropdown">
+                <form method="get">
+                    <label>Starts with</label>
+                    <input type="text" name="alpha" maxlength="1">
+
+                    <div class="price-row">
+                        <div class="price-field">
+                            <label>Min Price</label>
+                            <input type="number" name="min">
+                        </div>
+                        <div class="price-field">
+                            <label>Max Price</label>
+                            <input type="number" name="max">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="apply-filter">Apply</button>
+                </form>
+            </div>
+    </details>
+    
+    <form method="get" class="nav-search">
+        <input type="text" name="q" placeholder="Search by category">
+        <button type="submit">Search</button>
+    </form>
+    
+
+    <div class="nav-right">
+       {% if user.is_authenticated %}
+       <a href="{% url 'profile' %}" class="profile-icon">👤 Account</a>
+       <!-- <a href="{% url 'profile' %}" class="profile-icon">👤 Account</a> -->
+       {% else %}
+       <a href="{% url 'login' %}">Login</a>
+       {% endif %}
+    </div>
+</nav>
+<hr>
+  {% if request.resolver_match.url_name == 'profile' %}
+    <div class="profile-overlay"></div>
+  {% endif %}
+  {% if no_results %}
+      <p>No products found for "{{ query }}"</p>
+  {% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+ 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="orders-page">
+    <h2 class="page-title">Orders</h2>
+
+    {% if orders %}
+    <div class="orders-container">
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Ordered On</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.product.title }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.ordered_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="empty-text">No orders yet</p>
+        <a href="{% url 'product' %}" class="continue-link">Continue Shopping</a>
+    {% endif %}
+    
+    <a href="{% url 'product' %}">
+          <button class="continue-btn">Continue Shopping</button> 
+    </a>    
+</div>
+
+{% endblock %}
