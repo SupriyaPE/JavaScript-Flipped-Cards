@@ -1,0 +1,104 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #6ee7d8, #5a8dee);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    background: #ffffff;
+    width: 450px;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.add-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+
+.add-box button {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.task {
+    background: #f3f3f3;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.task.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+.actions a {
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+.actions .edit {
+    background: #22c55e;
+    color: white;
+}
+
+.actions .delete {
+    background: #ef4444;
+    color: white;
+}
+
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+form button {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+

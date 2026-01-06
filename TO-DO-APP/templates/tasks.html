@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+
+<div class="add-box">
+    <a href="/add">
+        <button>Add New</button>
+    </a>
+</div>
+
+{% for task in tasks %}
+<div class="task {% if task.status == 'completed' %}completed{% endif %}">
+    <span>{{ task.title }}</span>
+
+    <div class="actions">
+        <a href="/edit/{{ task.id }}" class="edit">Edit</a>
+        <a href="/delete/{{ task.id }}" class="delete">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

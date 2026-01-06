@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}To Do App{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>My To Do App</h2>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
